@@ -48,4 +48,9 @@ public class TurnSystem : MonoBehaviour
         return currentUnitTurn;
     }
 
+    public bool IsCurrentPlayerTurn()
+    {
+        return !currentUnitTurn.IsEnemy();
+    }
+
 }

@@ -30,7 +30,6 @@ public class UnitManager : MonoBehaviour
 
     private void Unit_OnAnyUnitSpawned(object sender, EventArgs e)
     {
-        Debug.Log("Test");
         Unit unit = sender as Unit;
 
         unitList.Add(unit);
@@ -94,6 +93,16 @@ public class UnitManager : MonoBehaviour
     public int GetUnitListCount()
     {
         return unitList.Count;
+    }
+
+    public int GetEnemyUnitListCount()
+    {
+        return enemyUnitList.Count;
+    }
+
+    public Unit GetEnemyUnitFromIndex(int index)
+    {
+        return enemyUnitList[index];
     }
 
 }

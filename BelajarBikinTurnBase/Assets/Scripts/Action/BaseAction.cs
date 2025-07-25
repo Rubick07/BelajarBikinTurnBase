@@ -18,6 +18,10 @@ public abstract class BaseAction : MonoBehaviour
         unit = GetComponent<Unit>();
     }
 
+    public abstract string GetActionName();
+
+    public abstract void TakeAction(Action onActionComplete);
+
     protected void ActionStart(Action onActionComplete)
     {
         isActive = true;
