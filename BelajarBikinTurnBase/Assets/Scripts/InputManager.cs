@@ -64,4 +64,50 @@ public class InputManager : MonoBehaviour
 #endif
     }
 
+    public bool IsUpArrowPressed()
+    {
+#if USE_NEW_INPUT_SYSTEM
+        return playerInputActions.Player.UpArrow.WasPressedThisFrame();
+#else
+        return Input.GetKeyDown(KeyCode.UpArrow);;
+#endif
+    }
+
+    public bool IsDownArrowPressed()
+    {
+#if USE_NEW_INPUT_SYSTEM
+        return playerInputActions.Player.DownArrow.WasPressedThisFrame();
+#else
+        return Input.GetKeyDown(KeyCode.DownArrow);;
+#endif
+    }
+
+    public bool Is1KeyPressed()
+    {
+#if USE_NEW_INPUT_SYSTEM
+        return playerInputActions.Player._1.WasPressedThisFrame();
+#else
+        return Input.GetKeyDown(KeyCode.1);;
+#endif
+    }
+
+
+    public bool IsKeyboardWPressed()
+    {
+#if USE_NEW_INPUT_SYSTEM
+        return playerInputActions.Player.W.WasPressedThisFrame();
+#else
+        return Input.GetKeyDown(KeyCode.W);;
+#endif
+    }
+
+    public bool IsKeyboardEnterPressed()
+    {
+#if USE_NEW_INPUT_SYSTEM
+        return playerInputActions.Player.Enter.WasPressedThisFrame();
+#else
+        return Input.GetKeyDown(KeyCode.Enter);;
+#endif
+    }
+
 }

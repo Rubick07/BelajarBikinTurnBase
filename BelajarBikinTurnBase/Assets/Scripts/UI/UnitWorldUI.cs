@@ -10,6 +10,13 @@ public class UnitWorldUI : MonoBehaviour
         UnitActionSystem.Instance.OnActionStarted += UnitActionSystem_OnActionStarted;
         TurnSystem.Instance.OnUnitTurnChanged += TurnSystem_OnUnitTurnChanged;
 
+        BaseAction.OnAnyActionStart += BaseAction_OnAnyActionStart;
+
+        Hide();
+    }
+
+    private void BaseAction_OnAnyActionStart(object sender, System.EventArgs e)
+    {
         Hide();
     }
 

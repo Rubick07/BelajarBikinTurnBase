@@ -644,6 +644,37 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_baseMaterial: {fileID: 0}
   m_maskOffset: {x: 0, y: 0, z: 0, w: 0}
+--- !u!1 &1226141143960689940
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4464735702350686168}
+  m_Layer: 6
+  m_Name: ShootPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4464735702350686168
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1226141143960689940}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0.2624772, y: 0.6189495, z: -0.27760604, w: -0.68625224}
+  m_LocalPosition: {x: -0.8956961, y: 0.007248721, z: 0.02045021}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5127956592552698071}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1521769919915976429
 GameObject:
   m_ObjectHideFlags: 0
@@ -971,6 +1002,7 @@ Transform:
   m_Children:
   - {fileID: 5127956592552596275}
   - {fileID: 6311084084715795009}
+  - {fileID: 9135564776233925212}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!33 &5037304060995262698
@@ -1029,6 +1061,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 5127956592543628735}
+  footPositionTransform: {fileID: 9135564776233925212}
+  shootPointTransform: {fileID: 4464735702350686168}
+  fireballPrefab: {fileID: 7043846121885776131, guid: 051c9b5a3dc447b42a5da895eeeedc24, type: 3}
+  curseCirclePrefab: {fileID: 7909250533478703700, guid: 354b6251e950209409c75ab984acf000, type: 3}
+  magicCirclePrefab: {fileID: 3423388300971593625, guid: 48c5715f9603c3842a353516a8baefbb, type: 3}
 --- !u!114 &7820425840655452587
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1340,6 +1377,37 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!1 &3853537836701882297
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 9135564776233925212}
+  m_Layer: 6
+  m_Name: footPosition
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &9135564776233925212
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3853537836701882297}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: -0.5, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8128160267454040832}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4547787554821843279
 GameObject:
   m_ObjectHideFlags: 0
@@ -2061,7 +2129,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
-    m_AddedGameObjects: []
+    m_AddedGameObjects:
+    - targetCorrespondingSourceObject: {fileID: 459050, guid: bcc60fdbd3a37b44cbc0cb99db483477, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 4464735702350686168}
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: bcc60fdbd3a37b44cbc0cb99db483477, type: 3}
 --- !u!95 &5127956592543628735 stripped
@@ -2072,5 +2143,10 @@ Animator:
 --- !u!4 &5127956592552596275 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 438990, guid: bcc60fdbd3a37b44cbc0cb99db483477, type: 3}
+  m_PrefabInstance: {fileID: 5127956592553026045}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &5127956592552698071 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 459050, guid: bcc60fdbd3a37b44cbc0cb99db483477, type: 3}
   m_PrefabInstance: {fileID: 5127956592553026045}
   m_PrefabAsset: {fileID: 0}

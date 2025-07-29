@@ -60,4 +60,37 @@ public class Unit : MonoBehaviour
         return healthSystem;
     }
 
+    public List<SkillAction> GetSkillActionList()
+    {
+        List<SkillAction> skillActionList = new List<SkillAction>();
+
+        foreach(BaseAction baseAction in baseActionArray)
+        {
+            if(baseAction is SkillAction)
+            {
+                SkillAction skillAction = (SkillAction)baseAction;
+                skillActionList.Add(skillAction);
+            }
+        }
+
+        return skillActionList;
+    }
+
+    public int GetSkillActionListCount()
+    {
+        List<SkillAction> skillActionList = new List<SkillAction>();
+
+        foreach (BaseAction baseAction in baseActionArray)
+        {
+            if (baseAction is SkillAction)
+            {
+                SkillAction skillAction = (SkillAction)baseAction;
+                skillActionList.Add(skillAction);
+            }
+        }
+
+        return skillActionList.Count;
+    }
+
+
 }

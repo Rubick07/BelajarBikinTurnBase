@@ -37,6 +37,7 @@ public class UnitManager : MonoBehaviour
         if (unit.IsEnemy())
         {
             enemyUnitList.Add(unit);
+            SortEnemyUnitList();
         }
         else
         {
@@ -68,6 +69,11 @@ public class UnitManager : MonoBehaviour
     {
         unitSortList = unitList;
         unitSortList.Sort((a,b) => b.GetSpeed().CompareTo(a.GetSpeed()));
+    }
+
+    private void SortEnemyUnitList()
+    {
+        enemyUnitList.Sort((a, b) => b.transform.position.x.CompareTo(a.transform.position.x));
     }
 
     public List<Unit> GetUnitList()
