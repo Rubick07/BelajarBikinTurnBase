@@ -5,5 +5,17 @@ using UnityEngine;
 
 public abstract class SkillAction : BaseAction
 {
-    [SerializeField] private int skillCost;
+    [SerializeField] private int manaCost;
+    [SerializeField] private Sprite skillImage;
+
+    private void Start()
+    {
+        skillCost = manaCost;
+    }
+
+    public Sprite GetSkillImage()
+    {
+        return skillImage;
+    }
+
 }

@@ -45,7 +45,6 @@ public class UnitActionSystem : MonoBehaviour
     private void Start()
     {
         selectedEnemyUnit = UnitManager.Instance.GetEnemyUnitFromIndex(0);
-
         TurnSystem.Instance.OnUnitTurnChanged += TurnSystem_OnUnitTurnChanged;
     }
 
@@ -140,6 +139,14 @@ public class UnitActionSystem : MonoBehaviour
                 SetBusy();
                 currentSkillAction.TakeAction(ClearBusy);
             }
+
+            if (InputManager.Instance.Is1KeyPressed())
+            {
+                selectedUnit.GetManaSystem().RestoreMana(currentSkillAction.GetSkillCost());
+
+                state = State.SelectMagic;
+                OnStateChanged?.Invoke(this, EventArgs.Empty);
+            }
         }
     }
 
@@ -162,6 +169,9 @@ public class UnitActionSystem : MonoBehaviour
         }
         if (InputManager.Instance.IsKeyboardEnterPressed())
         {
+            if (!selectedUnit.GetManaSystem().ConsumeMana(currentSkillAction.GetSkillCost()))
+                return;
+            
             state = State.SelectEnemy;
 
             OnStateChanged?.Invoke(this, EventArgs.Empty);

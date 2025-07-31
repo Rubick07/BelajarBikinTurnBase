@@ -351,6 +351,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textMeshPro: {fileID: 9033992197137211566}
+  costtextMeshPro: {fileID: 3236638127772146966}
+  image: {fileID: 7124413150783817453}
   button: {fileID: 484190618745318602}
   selectedVisual: {fileID: 238418418314110614}
 --- !u!1 &3280458055973218849

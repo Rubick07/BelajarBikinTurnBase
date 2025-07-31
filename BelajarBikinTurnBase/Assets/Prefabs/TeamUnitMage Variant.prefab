@@ -51,6 +51,10 @@ PrefabInstance:
       propertyPath: shootPointTransform
       value: 
       objectReference: {fileID: 416603306315697052}
+    - target: {fileID: 6236955471719001432, guid: d83435d48fe69d142b34c616eabeae8d, type: 3}
+      propertyPath: unitImage
+      value: 
+      objectReference: {fileID: 21300000, guid: e59804a131a814743bb8e0f941f72783, type: 3}
     - target: {fileID: 8128160267454040832, guid: d83435d48fe69d142b34c616eabeae8d, type: 3}
       propertyPath: m_LocalPosition.x
       value: -3.37
@@ -105,6 +109,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 2942195380628377845, guid: d83435d48fe69d142b34c616eabeae8d, type: 3}
       insertIndex: -1
       addedObject: {fileID: 6398411906835218173}
+    - targetCorrespondingSourceObject: {fileID: 2942195380628377845, guid: d83435d48fe69d142b34c616eabeae8d, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 5190246042801144317}
   m_SourcePrefab: {fileID: 100100000, guid: d83435d48fe69d142b34c616eabeae8d, type: 3}
 --- !u!1 &3471344701289315310 stripped
 GameObject:
@@ -123,7 +130,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 318e1e8cf93cffe41ae179f027838cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCost: 0
+  skillCost: 20
+  skillImage: {fileID: -531988769, guid: db462b674823ad14b973f60825d330ca, type: 3}
 --- !u!114 &6398411906835218173
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -136,7 +144,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 83691a7cd0431f84ca30b776f95ebbe1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  skillCost: 0
+  skillCost: 10
+  skillImage: {fileID: -1073241956, guid: db462b674823ad14b973f60825d330ca, type: 3}
+--- !u!114 &5190246042801144317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3471344701289315310}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1f65271ccd5cab141841bfa92eae5b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillCost: 30
+  skillImage: {fileID: 620801842, guid: db462b674823ad14b973f60825d330ca, type: 3}
+  meteorprefab: {fileID: 899159715450580390, guid: a7765bc564bcd344fa745711a430f494, type: 3}
 --- !u!4 &7509031321619144731 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8128160267454040832, guid: d83435d48fe69d142b34c616eabeae8d, type: 3}

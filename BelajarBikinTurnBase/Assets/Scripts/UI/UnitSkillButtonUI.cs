@@ -8,6 +8,8 @@ using UnityEngine.EventSystems;
 public class UnitSkillButtonUI : MonoBehaviour
 {
     [SerializeField] private TextMeshProUGUI textMeshPro;
+    [SerializeField] private TextMeshProUGUI costtextMeshPro;
+    [SerializeField] private Image image;
     [SerializeField] private Button button;
     [SerializeField] private GameObject selectedVisual;
 
@@ -16,10 +18,13 @@ public class UnitSkillButtonUI : MonoBehaviour
     public void SetSkillAction(SkillAction skillAction)
     {
         this.baseAction = skillAction;
+        image.sprite = skillAction.GetSkillImage();
         textMeshPro.text = skillAction.GetActionName().ToUpper();
+        costtextMeshPro.text = skillAction.GetSkillCost().ToString() + " SP";
+
         button.onClick.AddListener(() =>
         {
-            Debug.Log(skillAction.GetActionName().ToUpper());
+            //skillAction.GetUnit().GetManaSystem().ConsumeMana(skillAction.GetSkillCost());
         });
     }
 

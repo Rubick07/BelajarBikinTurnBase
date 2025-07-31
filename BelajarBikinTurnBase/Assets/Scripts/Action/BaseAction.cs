@@ -8,6 +8,7 @@ public abstract class BaseAction : MonoBehaviour
     public static event EventHandler OnAnyActionStart;
     public static event EventHandler OnAnyActionComplete;
 
+    protected int skillCost;
     protected Unit unit;
     protected bool isActive;
 
@@ -41,5 +42,32 @@ public abstract class BaseAction : MonoBehaviour
     {
         return unit;
     }
+
+    public int GetSkillCost()
+    {
+        return skillCost;
+    }
+
+    public EnemyAIAction GetBestEnemyAIAction()
+    {
+        List<EnemyAIAction> enemyAIActionList = new List<EnemyAIAction>();
+
+        enemyAIActionList.Sort((EnemyAIAction a, EnemyAIAction b) => b.actionValue - a.actionValue);
+        if (enemyAIActionList.Count > 0)
+        {
+            return enemyAIActionList[0];
+        }
+        else
+        {
+            //gk bisa ngapa ngapain
+            return null;
+        }
+
+    }
+
+
+    public abstract EnemyAIAction GetEnemyAIAction();
+
+
 
 }

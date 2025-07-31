@@ -23,7 +23,7 @@ public class TurnSystem : MonoBehaviour
     public void NextUnitOnCurrentTurn()
     {
         currentUnitCount++;
-        if (currentUnitCount == UnitManager.Instance.GetUnitListCount())
+        if (currentUnitCount >= UnitManager.Instance.GetUnitListCount())
             NextTurn();
 
         List<Unit> test = UnitManager.Instance.GetUnitSortList();

@@ -55,14 +55,14 @@ public class UnitAnimator : MonoBehaviour
         Destroy(magicCircleTransform.gameObject, 1.2f);
     }
 
-    private void FireballSkillAction_OnUnitSpellCasted(object sender, System.EventArgs e)
+    private void FireballSkillAction_OnUnitSpellCasted(object sender, Unit targetUnit)
     {
         Transform fireballTransform = Instantiate(fireballPrefab, shootPointTransform);
         fireballTransform.parent = null;
 
         BulletProjectile bulletProjectile = fireballTransform.GetComponent<BulletProjectile>();
 
-        bulletProjectile.Setup(UnitActionSystem.Instance.GetSelectedEnemyUnit().transform.position);
+        bulletProjectile.Setup(targetUnit.transform.position);
 
     }
 

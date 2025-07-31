@@ -50,4 +50,12 @@ public class UnitWorldUI : MonoBehaviour
         gameObject.SetActive(false);
     }
 
+    private void OnDestroy()
+    {
+        UnitActionSystem.Instance.OnActionStarted -= UnitActionSystem_OnActionStarted;
+        TurnSystem.Instance.OnUnitTurnChanged -= TurnSystem_OnUnitTurnChanged;
+
+        BaseAction.OnAnyActionStart -= BaseAction_OnAnyActionStart;
+    }
+
 }

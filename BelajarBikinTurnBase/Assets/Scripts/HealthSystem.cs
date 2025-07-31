@@ -11,6 +11,7 @@ public class HealthSystem : MonoBehaviour
     [SerializeField] private int health = 100;
     private int maxHealth;
 
+    private int lastDamageValue;
     private void Awake()
     {
         maxHealth = health;
@@ -19,7 +20,7 @@ public class HealthSystem : MonoBehaviour
     public void Damage(int damageAmount)
     {
         health -= damageAmount;
-
+        lastDamageValue = damageAmount;
         if (health < 0)
         {
             health = 0;
@@ -37,6 +38,16 @@ public class HealthSystem : MonoBehaviour
     private void Die()
     {
         OnDead?.Invoke(this, EventArgs.Empty);
+    }
+
+    public int GetLastDamageValue()
+    {
+        return lastDamageValue;
+    }
+
+    public int GetHealth()
+    {
+        return health;
     }
 
     public float GetHealthNormalized()

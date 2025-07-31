@@ -11,6 +11,7 @@ public class AttackAction : BaseAction
     public event EventHandler OnSwordActionStarted;
     public event EventHandler OnSwordActionCompleted;
 
+    private Unit targetUnit;
     private enum State
     {
         Walking,
@@ -41,7 +42,7 @@ public class AttackAction : BaseAction
 
     private void Walk()
     {
-        Vector3 targetPosition = UnitActionSystem.Instance.GetSelectedEnemyUnit().transform.position;
+        Vector3 targetPosition = targetUnit.transform.position;
         targetPosition = new Vector3(targetPosition.x, transform.position.y, targetPosition.z);
 
         Vector3 moveDirection = (targetPosition - transform.position).normalized;
@@ -73,7 +74,7 @@ public class AttackAction : BaseAction
         {
             transform.position = positionBeforeAttack;
 
-            UnitActionSystem.Instance.GetSelectedEnemyUnit().GetHealthSystem().Damage(10);
+            targetUnit.GetHealthSystem().Damage(10);
 
             OnSwordActionCompleted?.Invoke(this, EventArgs.Empty);
 
@@ -93,13 +94,27 @@ public class AttackAction : BaseAction
 
         positionBeforeAttack = transform.position;
 
+        if (GetUnit().IsEnemy())
+        {
+
+            targetUnit = UnitManager.Instance.GetRandomFriendlyUnit(); 
+        }
+        else
+        {
+            targetUnit = UnitActionSystem.Instance.GetSelectedEnemyUnit();
+        }
+
 
         OnStartMoving?.Invoke(this, EventArgs.Empty);
 
         ActionStart(onActionComplete);
     }
 
-
-
-
+    public override EnemyAIAction GetEnemyAIAction()
+    {
+        return new EnemyAIAction
+        {
+            actionValue = 0
+        };
+    }
 }

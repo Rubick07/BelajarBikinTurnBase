@@ -42,8 +42,6 @@ public class CurseSkillAction : SkillAction
                 {
                     OnUnitSpellCasted?.Invoke(this, EventArgs.Empty);
 
-                    UnitActionSystem.Instance.GetSelectedEnemyUnit().GetHealthSystem().Damage(90);
-
                     canShoot = false;
                 }
 
@@ -75,6 +73,7 @@ public class CurseSkillAction : SkillAction
                 stateTimer = coolOffStateTimer;
                 break;
             case State.CoolOff:
+                UnitActionSystem.Instance.GetSelectedEnemyUnit().GetHealthSystem().Damage(90);
                 ActionComplete();
                 break;
         }
@@ -92,6 +91,7 @@ public class CurseSkillAction : SkillAction
         float chantingStateTimer = 1.2f;
         stateTimer = chantingStateTimer;
 
+
         canShoot = true;
 
         OnUnitChanting?.Invoke(this, EventArgs.Empty);
@@ -100,4 +100,11 @@ public class CurseSkillAction : SkillAction
         ActionStart(onActionComplete);
     }
 
+    public override EnemyAIAction GetEnemyAIAction()
+    {
+        return new EnemyAIAction
+        {
+            actionValue = 0
+        };
+    }
 }

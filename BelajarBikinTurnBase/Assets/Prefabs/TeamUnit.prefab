@@ -980,6 +980,8 @@ GameObject:
   - component: {fileID: 3292337095245029993}
   - component: {fileID: 7820425840655452587}
   - component: {fileID: 3394161191907669764}
+  - component: {fileID: 8304545775776445143}
+  - component: {fileID: 5295913823586560171}
   m_Layer: 6
   m_Name: TeamUnit
   m_TagString: Untagged
@@ -1046,6 +1048,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 038dae0d2e432f740af9dd8f4d10093c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  unitImage: {fileID: 21300000, guid: 00aeccb1d963995428c0a8a4be00c53e, type: 3}
   speed: 10
   isEnemy: 0
 --- !u!114 &3292337095245029993
@@ -1091,6 +1094,32 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c909c5ed82a5bbe499aa3f803cb5bdce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &8304545775776445143
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942195380628377845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eea09859da799804bb0ca1d93b333afe, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  damageTextPrefab: {fileID: 7970089791554278406, guid: 06837259e77cba342a09c2b6cc4baa77, type: 3}
+--- !u!114 &5295913823586560171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2942195380628377845}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 92688f3d3e8b7a4468983ef88e7b0c99, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mana: 100
 --- !u!1 &3018391821085893361
 GameObject:
   m_ObjectHideFlags: 0

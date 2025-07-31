@@ -26,15 +26,22 @@ public class MeteorAction : SkillAction
     {
         Transform meteorTransform = Instantiate(meteorprefab, UnitActionSystem.Instance.GetSelectedEnemyUnit().transform.position, Quaternion.identity);
         MeteorVFX meteorVFX = meteorTransform.GetComponent<MeteorVFX>();
-        meteorVFX.SetUp(OnGrenadeBehaviorComplete);
+        meteorVFX.SetUp(OnMeteorBehaviorComplete);
 
         OnUnitCasting?.Invoke(this, EventArgs.Empty);
         ActionStart(onActionComplete);
     }
 
-    private void OnGrenadeBehaviorComplete()
+    private void OnMeteorBehaviorComplete()
     {
         ActionComplete();
     }
 
+    public override EnemyAIAction GetEnemyAIAction()
+    {
+        return new EnemyAIAction
+        {
+            actionValue = 0
+        };
+    }
 }

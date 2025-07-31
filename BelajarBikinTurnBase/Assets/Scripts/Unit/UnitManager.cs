@@ -106,9 +106,27 @@ public class UnitManager : MonoBehaviour
         return enemyUnitList.Count;
     }
 
+    public int GetFriendlyUnitListCount()
+    {
+        return friendlyUnitList.Count;
+    }
+
     public Unit GetEnemyUnitFromIndex(int index)
     {
         return enemyUnitList[index];
     }
+
+    public Unit GetFriendlyUnitFromIndex(int index)
+    {
+        return friendlyUnitList[index];
+    }
+
+    public Unit GetRandomFriendlyUnit()
+    {
+        int choice = UnityEngine.Random.Range(0, friendlyUnitList.Count);
+
+        return friendlyUnitList[choice];
+    }
+
 
 }

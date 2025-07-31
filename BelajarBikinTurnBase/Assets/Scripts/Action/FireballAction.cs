@@ -13,13 +13,14 @@ public class FireballAction : SkillAction
     }
 
     public event EventHandler OnUnitChanting;
-    public event EventHandler OnUnitSpellCasted;
+    public event EventHandler<Unit> OnUnitSpellCasted;
 
     private bool canShoot = false;
 
     private float stateTimer;
     private State state;
 
+    private Unit targetUnit;
     private void Update()
     {
         if (!isActive)
@@ -30,17 +31,17 @@ public class FireballAction : SkillAction
         switch (state)
         {
             case State.Chanting:
-                Vector3 targetPosition = UnitActionSystem.Instance.GetSelectedEnemyUnit().transform.position;
-                Vector3 moveDirection = (targetPosition - transform.position).normalized;
+                Vector3 targetPosition = targetUnit.transform.position;
+                Vector3 rotateDirection = (targetPosition - transform.position).normalized;
 
                 float rotateSpeed = 10f;
-                transform.forward = Vector3.Lerp(transform.forward, moveDirection, Time.deltaTime * rotateSpeed);
+                transform.forward = Vector3.Lerp(transform.forward, rotateDirection, Time.deltaTime * rotateSpeed);
 
                 break;
             case State.SpellCasted:
                 if (canShoot)
                 {
-                    OnUnitSpellCasted?.Invoke(this, EventArgs.Empty);
+                    OnUnitSpellCasted?.Invoke(this, targetUnit);
 
                     canShoot = false;
                 }
@@ -73,7 +74,7 @@ public class FireballAction : SkillAction
                 stateTimer = coolOffStateTimer;
                 break;
             case State.CoolOff:
-                UnitActionSystem.Instance.GetSelectedEnemyUnit().GetHealthSystem().Damage(90);
+                targetUnit.GetHealthSystem().Damage(90);
                 ActionComplete();
                 break;
         }
@@ -88,6 +89,17 @@ public class FireballAction : SkillAction
     public override void TakeAction(Action onActionComplete)
     {
         state = State.Chanting;
+
+        if (GetUnit().IsEnemy())
+        {
+
+            targetUnit = UnitManager.Instance.GetRandomFriendlyUnit();
+        }
+        else
+        {
+            targetUnit = UnitActionSystem.Instance.GetSelectedEnemyUnit();
+        }
+
         float chantingStateTimer = 1.8f;
         stateTimer = chantingStateTimer;
 
@@ -99,4 +111,11 @@ public class FireballAction : SkillAction
         ActionStart(onActionComplete);
     }
 
+    public override EnemyAIAction GetEnemyAIAction()
+    {
+        return new EnemyAIAction
+        {
+            actionValue = 1
+        };
+    }
 }

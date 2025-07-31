@@ -5,6 +5,7 @@ using System;
 
 public class Unit : MonoBehaviour
 {
+    [SerializeField] private Sprite unitImage;
     [SerializeField] private int speed;
     [SerializeField] private bool isEnemy;
 
@@ -12,10 +13,12 @@ public class Unit : MonoBehaviour
     public static event EventHandler OnAnyUnitDead;
     private BaseAction[] baseActionArray;
     private HealthSystem healthSystem;
+    private ManaSystem manaSystem;
     private void Awake()
     {
         baseActionArray = GetComponents<BaseAction>();
         healthSystem = GetComponent<HealthSystem>();
+        manaSystem = GetComponent<ManaSystem>();
     }
 
     private void Start()
@@ -60,6 +63,20 @@ public class Unit : MonoBehaviour
         return healthSystem;
     }
 
+    public ManaSystem GetManaSystem()
+    {
+        return manaSystem;
+    }
+
+    public Sprite GetUnitImage()
+    {
+        return unitImage;
+    }
+    public BaseAction[] GetBaseActionArray()
+    {
+        return baseActionArray;
+    }
+
     public List<SkillAction> GetSkillActionList()
     {
         List<SkillAction> skillActionList = new List<SkillAction>();
@@ -90,6 +107,26 @@ public class Unit : MonoBehaviour
         }
 
         return skillActionList.Count;
+    }
+
+    public bool TrySpendActionPointsToTakeAction(BaseAction baseAction)
+    {
+        if (CanSpendSkillToTakeSkillAction(baseAction))
+        {
+            SpendsActionPoints(baseAction.GetSkillCost());
+            return true;
+        }
+        else return false;
+    }
+
+    public bool CanSpendSkillToTakeSkillAction(BaseAction baseAction)
+    {
+        return manaSystem.GetMana() >= baseAction.GetSkillCost();
+    }
+
+    private void SpendsActionPoints(int amount)
+    {
+        manaSystem.ConsumeMana(amount);
     }
 
 
