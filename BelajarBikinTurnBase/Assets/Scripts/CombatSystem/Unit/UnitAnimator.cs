@@ -44,8 +44,6 @@ public class UnitAnimator : MonoBehaviour
             meteorAction.OnUnitCasting += MeteorAction_OnUnitCasting;
         }
 
-
-
     }
 
     private void MeteorAction_OnUnitCasting(object sender, System.EventArgs e)

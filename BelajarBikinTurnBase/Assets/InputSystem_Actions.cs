@@ -46,6 +46,15 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""initialStateCheck"": true
                 },
                 {
+                    ""name"": ""Interact"",
+                    ""type"": ""Button"",
+                    ""id"": ""b6726b91-6625-468e-9705-645576924bc0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
                     ""name"": ""Click"",
                     ""type"": ""Button"",
                     ""id"": ""b5b0cb2b-cc4e-45c7-97c1-9ef992a59d6b"",
@@ -389,6 +398,17 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": "";Keyboard&Mouse"",
                     ""action"": ""Enter"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d43e93fb-6257-4673-bf23-c86d437e8d42"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": "";Keyboard&Mouse"",
+                    ""action"": ""Interact"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -978,6 +998,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         m_Player = asset.FindActionMap("Player", throwIfNotFound: true);
         m_Player_Move = m_Player.FindAction("Move", throwIfNotFound: true);
         m_Player_Look = m_Player.FindAction("Look", throwIfNotFound: true);
+        m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Click = m_Player.FindAction("Click", throwIfNotFound: true);
         m_Player_Attack = m_Player.FindAction("Attack", throwIfNotFound: true);
         m_Player_LeftArrow = m_Player.FindAction("LeftArrow", throwIfNotFound: true);
@@ -1068,6 +1089,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     private List<IPlayerActions> m_PlayerActionsCallbackInterfaces = new List<IPlayerActions>();
     private readonly InputAction m_Player_Move;
     private readonly InputAction m_Player_Look;
+    private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Click;
     private readonly InputAction m_Player_Attack;
     private readonly InputAction m_Player_LeftArrow;
@@ -1083,6 +1105,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
         public PlayerActions(@InputSystem_Actions wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Player_Move;
         public InputAction @Look => m_Wrapper.m_Player_Look;
+        public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Click => m_Wrapper.m_Player_Click;
         public InputAction @Attack => m_Wrapper.m_Player_Attack;
         public InputAction @LeftArrow => m_Wrapper.m_Player_LeftArrow;
@@ -1107,6 +1130,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Look.started += instance.OnLook;
             @Look.performed += instance.OnLook;
             @Look.canceled += instance.OnLook;
+            @Interact.started += instance.OnInteract;
+            @Interact.performed += instance.OnInteract;
+            @Interact.canceled += instance.OnInteract;
             @Click.started += instance.OnClick;
             @Click.performed += instance.OnClick;
             @Click.canceled += instance.OnClick;
@@ -1144,6 +1170,9 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
             @Look.started -= instance.OnLook;
             @Look.performed -= instance.OnLook;
             @Look.canceled -= instance.OnLook;
+            @Interact.started -= instance.OnInteract;
+            @Interact.performed -= instance.OnInteract;
+            @Interact.canceled -= instance.OnInteract;
             @Click.started -= instance.OnClick;
             @Click.performed -= instance.OnClick;
             @Click.canceled -= instance.OnClick;
@@ -1355,6 +1384,7 @@ public partial class @InputSystem_Actions: IInputActionCollection2, IDisposable
     {
         void OnMove(InputAction.CallbackContext context);
         void OnLook(InputAction.CallbackContext context);
+        void OnInteract(InputAction.CallbackContext context);
         void OnClick(InputAction.CallbackContext context);
         void OnAttack(InputAction.CallbackContext context);
         void OnLeftArrow(InputAction.CallbackContext context);

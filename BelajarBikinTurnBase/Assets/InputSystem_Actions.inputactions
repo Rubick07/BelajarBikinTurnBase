@@ -24,6 +24,15 @@
                     "initialStateCheck": true
                 },
                 {
+                    "name": "Interact",
+                    "type": "Button",
+                    "id": "b6726b91-6625-468e-9705-645576924bc0",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
                     "name": "Click",
                     "type": "Button",
                     "id": "b5b0cb2b-cc4e-45c7-97c1-9ef992a59d6b",
@@ -367,6 +376,17 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Enter",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d43e93fb-6257-4673-bf23-c86d437e8d42",
+                    "path": "<Keyboard>/e",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Interact",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

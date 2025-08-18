@@ -7,6 +7,11 @@ public class Testing : MonoBehaviour
     [SerializeField] private HealthSystem healthSystem;
     void Update()
     {
+        if (InputManager.Instance.IsKeyboardQPressed())
+        {
+            Debug.Log("Q");
+        }
+
         if(Input.GetKeyDown(KeyCode.L))
             TurnSystem.Instance.NextUnitOnCurrentTurn();
 
