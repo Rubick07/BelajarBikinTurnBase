@@ -115,4 +115,9 @@ public class InputManager : MonoBehaviour
         return playerInputActions.Player.Move.ReadValue<Vector2>();
     }
 
+    public InputSystem_Actions GetInputActions()
+    {
+        return playerInputActions;
+    }
+
 }

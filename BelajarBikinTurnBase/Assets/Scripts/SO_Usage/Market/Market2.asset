@@ -1,0 +1,16 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ab82fba64c43944eb4b65bbf13beae4, type: 3}
+  m_Name: Market2
+  m_EditorClassIdentifier: 
+  ItemToSellInMarket:
+  - {fileID: 11400000, guid: e2fa0cf4361b8ae408fa3566718b55dc, type: 2}

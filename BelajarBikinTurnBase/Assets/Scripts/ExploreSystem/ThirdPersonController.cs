@@ -20,7 +20,7 @@ public class ThirdPersonController : MonoBehaviour
     private void Awake()
     {
         characterController = GetComponent<CharacterController>();
-        Cursor.lockState = CursorLockMode.Locked;
+        //Cursor.lockState = CursorLockMode.Locked;
 
         instance = this;
     }
@@ -28,13 +28,11 @@ public class ThirdPersonController : MonoBehaviour
     private void Start()
     {
         //InputManager.instance.GetInputActions().Player.Jump.performed += Jump_performed;
-        //InputManager.Instance.GetInputActions().Player.Interact.performed += Interact_performed;
-
+        InputManager.Instance.GetInputActions().Player.Interact.performed += Interact_performed;
     }
 
     private void Update()
     {
-
         float horizontal = InputManager.Instance.GetMoveInputValue().x;
         float vertical = InputManager.Instance.GetMoveInputValue().y;
 
@@ -62,8 +60,6 @@ public class ThirdPersonController : MonoBehaviour
         }
 
         characterController.Move(gravity * speed * Time.deltaTime);
-
-
     }
 
     public void SetIsFloating(bool isFloating)
@@ -77,15 +73,12 @@ public class ThirdPersonController : MonoBehaviour
         gravity.y = 0f;
     }
 
-/*
+
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
-        IInteractable interactable = InteractSystem.instance.GetRaycastHit().collider.gameObject.GetComponent<IInteractable>();
-        Debug.Log(interactable);
-
-        interactable.Interact();
+        InteractSystem.instance.InteractCheck();
     }
-*/
+
     private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         gravity.y = 5f;

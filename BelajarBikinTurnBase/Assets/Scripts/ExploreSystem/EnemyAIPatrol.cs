@@ -104,9 +104,4 @@ public class EnemyAIPatrol : AIBase
         return enemyState;
     }
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        Debug.Log(collision.gameObject);
-    }
-
 }
