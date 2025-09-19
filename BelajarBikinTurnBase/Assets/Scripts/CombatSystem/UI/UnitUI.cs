@@ -21,18 +21,34 @@ public class UnitUI : MonoBehaviour
         unitImage.sprite = unit.GetUnitImage();
 
         healthSystem.OnDamaged += HealthSystem_OnDamaged;
-        manaSystem.OnConsumeMana += ManaSystem_OnConsumeMana;
+        healthSystem.OnRestoreHealth += HealthSystem_OnRestoreHealth;
 
+        manaSystem.OnConsumeMana += ManaSystem_OnConsumeMana;
+        manaSystem.OnRestoreMana += ManaSystem_OnRestoreMana;
+
+        Refresh();
+    }
+
+    private void ManaSystem_OnRestoreMana(object sender, System.EventArgs e)
+    {
+        Refresh();
+    }
+
+    private void HealthSystem_OnRestoreHealth(object sender, System.EventArgs e)
+    {
+        Refresh();
     }
 
     private void ManaSystem_OnConsumeMana(object sender, System.EventArgs e)
     {
         manaBarImage.fillAmount = manaSystem.GetManaNormalized();
+        Refresh();
     }
 
     private void HealthSystem_OnDamaged(object sender, System.EventArgs e)
     {
         healthBarImage.fillAmount = healthSystem.GetHealthNormalized();
+        Refresh();
     }
 
     public void Refresh()

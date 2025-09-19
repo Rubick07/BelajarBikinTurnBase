@@ -5,8 +5,10 @@ using System;
 
 public class HealthSystem : MonoBehaviour
 {
+
     public event EventHandler OnDead;
     public event EventHandler OnDamaged;
+    public event EventHandler OnRestoreHealth;
 
     [SerializeField] private int health = 100;
     private int maxHealth;
@@ -15,6 +17,14 @@ public class HealthSystem : MonoBehaviour
     private void Awake()
     {
         maxHealth = health;
+    }
+
+    public void RestoreHealth(int restoreAmount)
+    {
+        health += restoreAmount;
+
+        OnRestoreHealth?.Invoke(this, EventArgs.Empty);
+
     }
 
     public void Damage(int damageAmount)

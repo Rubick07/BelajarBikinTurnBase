@@ -12,8 +12,8 @@ public class Testing : MonoBehaviour
     [SerializeField] private ItemBase itemBase2;
     void Update()
     {
-        if(Input.GetKeyDown(KeyCode.L))
-            TurnSystem.Instance.NextUnitOnCurrentTurn();
+        if (Input.GetKeyDown(KeyCode.L))
+            GameManager.instance.SetCombatState(GameManager.CombatState.Battle);
 
         if (Input.GetKeyDown(KeyCode.I)){
             SceneManager.LoadScene("CombatSystemScene");

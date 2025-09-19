@@ -28,19 +28,31 @@ public class PauseSystem : MonoBehaviour
         if (pauseState == PauseState.Pause)
         {
             //Mulai
-            pauseState = PauseState.UnPause;
-
-            Cursor.lockState = CursorLockMode.Locked;
-
-            OnGameUnPause?.Invoke(this, EventArgs.Empty);
+            UnPause();
         }
         else
         {
             //Pause
-            pauseState = PauseState.Pause;
-            Cursor.lockState = CursorLockMode.None;
-            OnGamePause?.Invoke(this, EventArgs.Empty);
+            Pause();
         }
 
     }
+
+    public void UnPause()
+    {
+        pauseState = PauseState.UnPause;
+        OnGameUnPause?.Invoke(this, EventArgs.Empty);
+    }
+
+    public void Pause()
+    {
+        pauseState = PauseState.Pause;
+        OnGamePause?.Invoke(this, EventArgs.Empty);
+    }
+
+    public PauseState GetPauseState()
+    {
+        return pauseState;
+    }
+
 }

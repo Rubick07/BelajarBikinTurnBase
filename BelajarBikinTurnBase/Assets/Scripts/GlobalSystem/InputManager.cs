@@ -110,6 +110,15 @@ public class InputManager : MonoBehaviour
 #endif
     }
 
+    public bool IsKeyboardEscapePressed()
+    {
+#if USE_NEW_INPUT_SYSTEM
+        return playerInputActions.Player.Escape.WasPressedThisFrame();
+#else
+        return Input.GetKeyDown(KeyCode.Escape);;
+#endif
+    }
+
     public Vector2 GetMoveInputValue()
     {
         return playerInputActions.Player.Move.ReadValue<Vector2>();

@@ -20,6 +20,18 @@ public class TurnSystem : MonoBehaviour
         Instance = this;
     }
 
+    private void Start()
+    {
+        GameManager.instance.OnCombatStateChanged += GameManager_OnCombatStateChanged;
+    }
+
+    public void StartTurn()
+    {
+        currentUnitTurn = UnitManager.Instance.GetUnitSortList()[0];
+
+        OnUnitTurnChanged?.Invoke(this, EventArgs.Empty);
+    }
+
     public void NextUnitOnCurrentTurn()
     {
         currentUnitCount++;
@@ -38,6 +50,16 @@ public class TurnSystem : MonoBehaviour
         OnTurnChanged?.Invoke(this, EventArgs.Empty);
     }
 
+
+    private void GameManager_OnCombatStateChanged(object sender, GameManager.CombatState e)
+    {
+        if(e == GameManager.CombatState.Battle)
+        {
+            StartTurn();
+        }
+    }
+
+
     public int GetTurnNumber()
     {
         return turnNumber;
@@ -51,6 +73,11 @@ public class TurnSystem : MonoBehaviour
     public bool IsCurrentPlayerTurn()
     {
         return !currentUnitTurn.IsEnemy();
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.instance.OnCombatStateChanged -= GameManager_OnCombatStateChanged;
     }
 
 }

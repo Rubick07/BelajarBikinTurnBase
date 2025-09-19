@@ -27,6 +27,7 @@ namespace CombatSYSTEM
         private void Start()
         {
             TurnSystem.Instance.OnUnitTurnChanged += TurnSystem_OnUnitTurnChanged;
+            GameManager.instance.OnCombatStateChanged += GameManager_OnCombatStateChanged;
         }
 
         private void Update()
@@ -131,6 +132,19 @@ namespace CombatSYSTEM
             }
 
         }
+
+        private void GameManager_OnCombatStateChanged(object sender, GameManager.CombatState e)
+        {
+            if(e == GameManager.CombatState.Over)
+            {
+                this.enabled = false;
+            }
+            else if(e == GameManager.CombatState.Battle)
+            {
+                this.enabled = true;
+            }
+        }
+
     }
 
 }

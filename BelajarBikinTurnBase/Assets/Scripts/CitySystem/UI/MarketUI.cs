@@ -14,7 +14,7 @@ public class MarketUI : MonoBehaviour
         BuyMenu,
         SellMenu,
         EquipmentMenu,
-
+        QuantityMenu
     }
 
     public event EventHandler OnShopUIOpen;

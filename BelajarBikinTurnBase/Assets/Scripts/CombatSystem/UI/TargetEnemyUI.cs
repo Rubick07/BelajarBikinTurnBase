@@ -13,7 +13,6 @@ public class TargetEnemyUI : MonoBehaviour
         UnitActionSystem.Instance.OnSelectedEnemyUnitChanged += UnitActionSystem_OnSelectedEnemyUnitChanged;
         UnitActionSystem.Instance.OnStateChanged += UnitActionSystem_OnStateChanged;
 
-        targetPosition = targetPosition = UnitActionSystem.Instance.GetSelectedEnemyUnit().transform.position;
     }
 
     private void Update()

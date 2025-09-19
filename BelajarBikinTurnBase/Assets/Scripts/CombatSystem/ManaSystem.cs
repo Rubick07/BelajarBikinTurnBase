@@ -6,6 +6,7 @@ using System;
 public class ManaSystem : MonoBehaviour
 {
     public event EventHandler OnConsumeMana;
+    public event EventHandler OnRestoreMana;
 
     [SerializeField] private int mana = 100;
     private int maxMana;
@@ -34,6 +35,7 @@ public class ManaSystem : MonoBehaviour
     public void RestoreMana(int manaAmount)
     {
         mana += manaAmount;
+        OnRestoreMana?.Invoke(this, EventArgs.Empty);
     }
 
     public int GetMana()

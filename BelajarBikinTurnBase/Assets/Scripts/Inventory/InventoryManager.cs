@@ -33,7 +33,7 @@ public class InventoryManager : MonoBehaviour
         }
         else
         {
-            inventoryDictionary.Add(itemBase,1);
+            inventoryDictionary.Add(itemBase, 1);
         }
 
         OnInventoryChanged?.Invoke(this, EventArgs.Empty);
@@ -72,7 +72,8 @@ public class InventoryManager : MonoBehaviour
 
     public int GetItemAmounts(ItemBase itemBase)
     {
-        if (inventoryDictionary.ContainsKey(itemBase))
+        bool itemBaseFound = inventoryDictionary.ContainsKey(itemBase);
+        if (itemBaseFound)
         {
             return inventoryDictionary[itemBase];
         }

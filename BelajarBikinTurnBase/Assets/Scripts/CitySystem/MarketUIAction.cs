@@ -13,12 +13,10 @@ public class MarketUIAction : MonoBehaviour
     private void MarketUI_OnShopUIOpen(object sender, System.EventArgs e)
     {
         InputManager.Instance.GetInputActions().Player.Disable();
-        ThirdPersonCamera.instance.Hide();
     }
 
     private void MarketUI_OnShopUIClose(object sender, System.EventArgs e)
     {
         InputManager.Instance.GetInputActions().Player.Enable();
-        ThirdPersonCamera.instance.Show();
     }
 }

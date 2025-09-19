@@ -28,7 +28,11 @@ public class ThirdPersonController : MonoBehaviour
     private void Start()
     {
         //InputManager.instance.GetInputActions().Player.Jump.performed += Jump_performed;
-        InputManager.Instance.GetInputActions().Player.Interact.performed += Interact_performed;
+        ActionSetUp();
+
+        PauseSystem.instance.OnGamePause += PauseSystem_OnGamePause;
+        PauseSystem.instance.OnGameUnPause += PauseSystem_OnGameUnPause;
+
     }
 
     private void Update()
@@ -73,6 +77,17 @@ public class ThirdPersonController : MonoBehaviour
         gravity.y = 0f;
     }
 
+    private void ActionSetUp()
+    {
+        InputManager.Instance.GetInputActions().Player.Interact.performed += Interact_performed;
+        InputManager.Instance.GetInputActions().Player.Escape.performed += Escape_performed;
+    }
+
+    private void ActionDisable()
+    {
+        InputManager.Instance.GetInputActions().Player.Interact.performed -= Interact_performed;
+        InputManager.Instance.GetInputActions().Player.Escape.performed -= Escape_performed;
+    }
 
     private void Interact_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
@@ -82,6 +97,25 @@ public class ThirdPersonController : MonoBehaviour
     private void Jump_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
     {
         gravity.y = 5f;
+    }
+
+    private void Escape_performed(UnityEngine.InputSystem.InputAction.CallbackContext obj)
+    {
+        if(PauseSystem.instance.GetPauseState() == PauseSystem.PauseState.UnPause)
+        {
+            PauseSystem.instance.Pause();
+        }
+    }
+    private void PauseSystem_OnGameUnPause(object sender, System.EventArgs e)
+    {
+        ActionSetUp();
+        this.enabled = true;
+    }
+
+    private void PauseSystem_OnGamePause(object sender, System.EventArgs e)
+    {
+        ActionDisable();
+        this.enabled = false;
     }
 
 }
