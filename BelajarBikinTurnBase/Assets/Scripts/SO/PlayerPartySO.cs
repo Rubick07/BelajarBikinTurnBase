@@ -6,4 +6,5 @@ using System.Collections.Generic;
 public class PlayerPartySO : ScriptableObject
 {
     public List<GameObject> PlayerPartyGameobjectList;
+
 }
