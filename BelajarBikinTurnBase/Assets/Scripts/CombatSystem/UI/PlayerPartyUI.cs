@@ -2,30 +2,34 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class PlayerPartyUI : MonoBehaviour
+namespace CombatSYSTEM
 {
-    [SerializeField] private Transform playerPartyUIContainerTransform;
-    [SerializeField] private Transform unitUIPrefab;
-
-    private void Start()
+    public class PlayerPartyUI : MonoBehaviour
     {
-        Unit.OnAnyUnitSpawned += Unit_OnAnyUnitSpawned;
+        [SerializeField] private Transform playerPartyUIContainerTransform;
+        [SerializeField] private Transform unitUIPrefab;
+
+        private void Start()
+        {
+            Unit.OnAnyUnitSpawned += Unit_OnAnyUnitSpawned;
+        }
+
+        private void Unit_OnAnyUnitSpawned(object sender, System.EventArgs e)
+        {
+            Unit unit = (Unit)sender;
+
+            if (unit.IsEnemy())
+                return;
+
+            Transform unitUITransform = Instantiate(unitUIPrefab, playerPartyUIContainerTransform);
+
+
+            UnitUI unitUI = unitUITransform.GetComponent<UnitUI>();
+
+            unitUI.SetUp(unit);
+
+        }
+
     }
-
-    private void Unit_OnAnyUnitSpawned(object sender, System.EventArgs e)
-    {
-        Unit unit = (Unit)sender;
-
-        if (unit.IsEnemy())
-            return;
-
-        Transform unitUITransform = Instantiate(unitUIPrefab, playerPartyUIContainerTransform);
-        
-
-        UnitUI unitUI = unitUITransform.GetComponent<UnitUI>();
-
-        unitUI.SetUp(unit);
-
-    }
-
 }
+

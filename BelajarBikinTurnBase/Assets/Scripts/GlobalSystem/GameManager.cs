@@ -27,8 +27,6 @@ public class GameManager : MonoBehaviour
     [SerializeField] private SceneState sceneState;
     [SerializeField] private CombatState combatState;
 
-    [Header("PartSO Reference")]
-    [SerializeField] private PlayerPartySO playerPartySO;
     [SerializeField] private EnemyPartySO enemyPartySO;
 
     private void Awake()
