@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c5a35bfd68a5ae44b3018e47fac3379, type: 3}
   m_Name: PlayerParty
   m_EditorClassIdentifier: 
-  HeroPartyDataList:
+  heroPartyDataList:
   - {fileID: 11400000, guid: d699b0d78fcd1d64d9da3682e8af581b, type: 2}
+  - {fileID: 11400000, guid: 4364044e6093971469e69fb78b3f69e9, type: 2}

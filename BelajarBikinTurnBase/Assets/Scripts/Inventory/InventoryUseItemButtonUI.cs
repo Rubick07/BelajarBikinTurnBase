@@ -46,7 +46,8 @@ public class InventoryUseItemButtonUI : MonoBehaviour
 
         button.onClick.AddListener(() =>
         {
-            Debug.Log("USE: "+itembase.name);
+            InventoryManager.instance.SetSelectedItemBase(itembase);
+            PauseUI.instance.SetState(PauseUI.State.Selecthero);
         });
     }
 

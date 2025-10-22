@@ -21,6 +21,8 @@ public class ItemMarketButtonBuyUI : MonoBehaviour
 
     private void InventoryManager_OnInventoryChanged(object sender, System.EventArgs e)
     {
+        Debug.Log("Test");
+        Debug.Log(itemBase);
         itemAmountsTextMeshPro.text = InventoryManager.instance.GetItemAmounts(itemBase).ToString();
     }
 

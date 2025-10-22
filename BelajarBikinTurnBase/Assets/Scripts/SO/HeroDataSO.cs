@@ -23,6 +23,8 @@ public class HeroDataSO : ScriptableObject
     {
         health += mod;
 
+        health = Mathf.Clamp(health, 0, maxHealth);
+
         OnHealthChanged?.Invoke(this, health);
     }
 
@@ -44,6 +46,8 @@ public class HeroDataSO : ScriptableObject
     public void ModifyMana(int mod)
     {
         mana += mod;
+
+        mana = Mathf.Clamp(mana, 0, maxMana);
 
         OnManaChanged?.Invoke(this, mana);
     }

@@ -12,10 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2316000979100c14490e804672c2905e, type: 3}
   m_Name: DummyHeroData
   m_EditorClassIdentifier: 
-  heroSprite: {fileID: 0}
-  heroName: 
-  health: 0
-  maxHealth: 0
-  mana: 0
-  maxMana: 0
+  heroSprite: {fileID: 21300000, guid: 46b883ffb9efba84f96e8444c39e46dc, type: 3}
+  heroName: Bobby
+  health: 20
+  maxHealth: 50
+  mana: 35
+  maxMana: 100
   heroPrefab: {fileID: 0}

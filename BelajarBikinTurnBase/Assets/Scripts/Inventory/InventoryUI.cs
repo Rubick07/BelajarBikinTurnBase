@@ -81,7 +81,7 @@ public class InventoryUI : MonoBehaviour
             useButton.interactable = true;
             tossButton.interactable = true;
         }
-        else
+        else if(e == PauseUI.State.SelectItemMenu)
         {
             EventSystem.current.SetSelectedGameObject(inventoryItemButtonList[0].GetButton().gameObject);
             useButton.interactable = false;
@@ -98,6 +98,13 @@ public class InventoryUI : MonoBehaviour
     public void Hide()
     {
         gameObject.SetActive(false);
+    }
+
+    private void OnDestroy()
+    {
+        PauseSystem.instance.OnGameUnPause -= PauseSystem_OnGameUnPause;
+        PauseSystem.instance.OnGamePause -= PauseSystem_OnGamePause;
+        PauseUI.instance.OnStateChanged -= PauseUI_OnStateChanged;
     }
 
 }

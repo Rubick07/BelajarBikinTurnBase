@@ -1,5 +1,7 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class PlayerPartyUICity : MonoBehaviour
 {
@@ -11,6 +13,16 @@ public class PlayerPartyUICity : MonoBehaviour
     private void Start()
     {
         CreateHeroUI();
+
+        PauseUI.instance.OnStateChanged += PauseUI_OnStateChanged;
+    }
+
+    private void PauseUI_OnStateChanged(object sender, PauseUI.State e)
+    {
+        if(e == PauseUI.State.Selecthero)
+        {
+            EventSystem.current.SetSelectedGameObject(heroPartyUIList[0].GetButton().gameObject);
+        }
     }
 
     private void CreateHeroUI()
@@ -40,4 +52,8 @@ public class PlayerPartyUICity : MonoBehaviour
         heroPartyUIList.Clear();
     }
 
+    private void OnDestroy()
+    {
+        PauseUI.instance.OnStateChanged -= PauseUI_OnStateChanged;
+    }
 }

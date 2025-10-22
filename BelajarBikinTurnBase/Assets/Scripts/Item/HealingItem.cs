@@ -7,9 +7,10 @@ public class HealingItem : ItemBase
 {
     public int healthAmount;
 
-    public override void UseItem()
+    public override void UseItem(HeroDataSO heroDataSO)
     {
-        Debug.Log(healthAmount);
+        heroDataSO.ModifyHealth(healthAmount);
+        Debug.Log(heroDataSO.name + "Healed: " + healthAmount);
     }
 
 }

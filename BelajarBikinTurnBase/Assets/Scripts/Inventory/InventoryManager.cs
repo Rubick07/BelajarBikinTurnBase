@@ -11,6 +11,8 @@ public class InventoryManager : MonoBehaviour
 
     private Dictionary<ItemBase, int> inventoryDictionary = new Dictionary<ItemBase, int>();
 
+    private ItemBase selectedItemBase;
+
     private void Awake()
     {
         if (instance == null)
@@ -49,7 +51,7 @@ public class InventoryManager : MonoBehaviour
                 return false;
             }
 
-            itemBase.UseItem();
+            //itemBase.UseItem();
             RemoveItem(itemBase, 1);
             Debug.Log(itemBase.name + " " + inventoryDictionary[itemBase]);
 
@@ -86,6 +88,16 @@ public class InventoryManager : MonoBehaviour
     public Dictionary<ItemBase, int> GetInventoryDictionary()
     {
         return inventoryDictionary;
+    }
+
+    public void SetSelectedItemBase(ItemBase selectedItemBase)
+    {
+        this.selectedItemBase = selectedItemBase;
+    }
+
+    public ItemBase GetSelectedItemBase()
+    {
+        return selectedItemBase;
     }
 
 }

@@ -12,7 +12,8 @@ public class PauseUI : MonoBehaviour
     {
         MainMenu,
         InventoryMenu,
-        SelectItemMenu
+        SelectItemMenu,
+        Selecthero
     }
 
     public static PauseUI instance;
