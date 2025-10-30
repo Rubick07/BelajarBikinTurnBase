@@ -5758,7 +5758,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   sceneState: 0
   combatState: 0
-  playerPartySO: {fileID: 0}
   enemyPartySO: {fileID: 0}
 --- !u!4 &1667564152
 Transform:
