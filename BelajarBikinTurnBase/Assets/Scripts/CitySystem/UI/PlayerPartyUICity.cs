@@ -29,7 +29,7 @@ public class PlayerPartyUICity : MonoBehaviour
     {
         RemoveButtonList();
 
-        foreach (HeroDataSO herodata in HeroPartyManager.instance.GetPlayerPartySO().GetHeroDataSOList())
+        foreach (HeroDynamicData herodata in HeroPartyManager.instance.GetHeroDynamicDataList())
         {
             Transform heroPartyUITransform = Instantiate(unitPartyUIPrefab, playerPartyUIContainerTransform);
             HeroPartyUI heroPartyUI =
@@ -38,7 +38,6 @@ public class PlayerPartyUICity : MonoBehaviour
             heroPartyUI.SetUp(herodata);
 
             heroPartyUIList.Add(heroPartyUI);
-
         }
     }
 

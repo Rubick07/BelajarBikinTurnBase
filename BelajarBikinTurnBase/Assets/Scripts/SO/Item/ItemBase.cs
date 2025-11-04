@@ -16,7 +16,7 @@ public class ItemBase : ScriptableObject
     [SerializeField] protected string itemDescription;
     [SerializeField] protected Sprite itemSprite;
 
-    public virtual void UseItem(HeroDataSO heroDataSO)
+    public virtual void UseItem(HeroDynamicData heroDataSO)
     {
         Debug.Log("Test");
     }

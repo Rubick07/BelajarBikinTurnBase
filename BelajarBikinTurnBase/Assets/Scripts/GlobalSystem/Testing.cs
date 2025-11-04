@@ -10,6 +10,13 @@ public class Testing : MonoBehaviour
     [SerializeField] private GameObject UITest;
     [SerializeField] private ItemBase itemBase;
     [SerializeField] private ItemBase itemBase2;
+
+    HeroDynamicData asdf;
+
+    private void Start()
+    {
+        asdf = HeroPartyManager.instance.GetHeroDynamicDataList()[0];
+    }
     void Update()
     {
         if (Input.GetKeyDown(KeyCode.L))
@@ -26,13 +33,9 @@ public class Testing : MonoBehaviour
 
         if (Input.GetKeyDown(KeyCode.P))
         {
-            UITest.transform.DOMoveY(0, 1f);
+            asdf.ModifyHealth(-20);
         }
 
-        if (Input.GetKeyDown(KeyCode.O))
-        {
-            UITest.transform.DOMoveY(-120, 1f);
-        }
 
 
     }

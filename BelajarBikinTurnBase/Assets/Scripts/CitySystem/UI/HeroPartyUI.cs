@@ -12,16 +12,16 @@ public class HeroPartyUI : MonoBehaviour
     [SerializeField] private TextMeshProUGUI manaText;
     [SerializeField] private Button button;
 
-    private HeroDataSO heroData;
+    private HeroDynamicData heroData;
 
-    public void SetUp(HeroDataSO heroData)
+    public void SetUp(HeroDynamicData heroData)
     {
         this.heroData = heroData;
 
-        unitImage.sprite = heroData.GetHeroSprite();
+        unitImage.sprite = heroData.GetHeroDataSO().GetHeroSprite();
 
-        heroData.OnHealthChanged += HeroData_OnHealthChanged;
-        heroData.OnManaChanged += HeroData_OnManaChanged;
+        HeroDynamicData.OnAnyHealthChanged += HeroDynamicData_OnHealthChanged;
+        HeroDynamicData.OnAnyManaChanged += HeroDynamicData_OnManaChanged;
 
         PauseUI.instance.OnStateChanged += PauseUI_OnStateChanged;
 
@@ -32,6 +32,16 @@ public class HeroPartyUI : MonoBehaviour
 
         });
 
+        Refresh();
+    }
+
+    private void HeroDynamicData_OnManaChanged(object sender, int e)
+    {
+        Refresh();
+    }
+
+    private void HeroDynamicData_OnHealthChanged(object sender, int e)
+    {
         Refresh();
     }
 
@@ -47,22 +57,12 @@ public class HeroPartyUI : MonoBehaviour
         }
     }
 
-    private void HeroData_OnManaChanged(object sender, int e)
-    {
-        Refresh();
-    }
-
-    private void HeroData_OnHealthChanged(object sender, int e)
-    {
-        Refresh();
-    }
-
     public void Refresh()
     {
-        healthText.text = heroData.GetHealth().ToString();
+        healthText.text = heroData.health.ToString();
         healthBarImage.fillAmount = heroData.GetHealthNormalized();
 
-        manaText.text = heroData.GetMana().ToString();
+        manaText.text = heroData.mana.ToString();
         manaBarImage.fillAmount = heroData.GetManaNormalized();
 
     }
@@ -76,10 +76,11 @@ public class HeroPartyUI : MonoBehaviour
     {
         PauseUI.instance.OnStateChanged -= PauseUI_OnStateChanged;
 
+        HeroDynamicData.OnAnyHealthChanged -= HeroDynamicData_OnHealthChanged;
+        HeroDynamicData.OnAnyManaChanged -= HeroDynamicData_OnManaChanged;
+
         if (heroData == null)
             return;
-        heroData.OnHealthChanged -= HeroData_OnHealthChanged;
-        heroData.OnManaChanged -= HeroData_OnManaChanged;
     }
 
 }

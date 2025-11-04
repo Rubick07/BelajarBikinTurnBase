@@ -429,6 +429,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   healthSystem: {fileID: 0}
+  UITest: {fileID: 0}
+  itemBase: {fileID: 0}
+  itemBase2: {fileID: 0}
 --- !u!4 &208004282
 Transform:
   m_ObjectHideFlags: 0
@@ -2129,7 +2132,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ef15995deb79fd04c8119fc3830d2283, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerPartySO: {fileID: 11400000, guid: f6020b4434b9f1e43907cc7a2e369249, type: 2}
+  sceneState: 0
+  combatState: 0
   enemyPartySO: {fileID: 0}
 --- !u!4 &1856348883
 Transform:
@@ -2164,7 +2168,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3629073771137924753, guid: e5f8fe3f27adaa846b7cb4e6788e2eed, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 7293101724545272355, guid: e5f8fe3f27adaa846b7cb4e6788e2eed, type: 3}
       propertyPath: m_LocalPosition.x
