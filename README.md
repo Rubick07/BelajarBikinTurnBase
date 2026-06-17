@@ -29,15 +29,15 @@ This project using Unity 6000.0.58f2
 
 |  Script       | Description                                                  |
 | ------------------- | ------------------------------------------------------------ |
-| `TurnSystem` |Manages Turn for unit|
-|  `UnitManager.cs` | Manages Unit in field|
+| `TurnSystem` |Manages unit turns and battle flow|
+|  `UnitManager.cs` | Manages all units on the battlefield|
 | `BaseAction.cs`  | Abstract base class for all unit actions |
-| `Unit.cs`  | Handles character data and combat actions for battle units |
-| `UnitAnimator.cs`  | Handles Unit Animation and effect |
-| `UnitActionSystem.cs`  | Manages for Unit Action in battle |
-| `CameraManager.cs`  | Manages camera position |
-| `InputManager.cs`  | Manages player input |
-| `EnemyAI.cs`  | Manages for Enemy AI in combat scene |
+| `Unit.cs`  | Stores unit data and handles combat actions |
+| `UnitAnimator.cs`  | Handles unit animations and visual effects |
+| `UnitActionSystem.cs`  | Manages player input and unit actions during battle |
+| `CameraManager.cs`  | Manages camera movement and positioning |
+| `InputManager.cs`  | Handles player input |
+| `EnemyAI.cs`  | Controls enemy AI behavior during combat |
 | `etc`  | |
 
 
