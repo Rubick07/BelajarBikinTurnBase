@@ -34,7 +34,7 @@ This project using Unity 6000.0.58f2
 | `BaseAction.cs`  | Abstract base class for all unit actions |
 | `Unit.cs`  | Handles character data and combat actions for battle units |
 | `UnitAnimator.cs`  | Handles Unit Animation and effect |
-| `UnitActionSystem.cs`  | Manages for player Input in battle |
+| `UnitActionSystem.cs`  | Manages for Unit Action in battle |
 | `CameraManager.cs`  | Manages camera position |
 | `InputManager.cs`  | Manages player input |
 | `EnemyAI.cs`  | Manages for Enemy AI in combat scene |
