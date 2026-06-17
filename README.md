@@ -48,19 +48,19 @@ This project using Unity 6000.0.58f2
 
 ```
 ├── BelajarBikinTurnBase            # In this folder, containing all the Unity project files, to be opened by a Unity Editor
-   ├── Assets                       # In this folder, it contains all our code, assets, scenes, etc was not automatically created by Unity
-      ├── Animations                # In this folder, it contaions all animation clip and animation Controller
-      ├── Import                    # In this folder, it contaions all imported Unity Packages
-      ├── Materials                 # In this folder, it contaions all materials
-      ├── Plugins                   # In this folder, it contaions plugin for development
-      ├── Prefabs                   # In this folder, it contaions all prefabs for the games
-      ├── Resources                 # In this folder, it contaions plugin settings
-      ├── Scenes                    # In this folder, there are scenes. You can open these scenes to play the game via Unity
-      ├── Scripts                   # In this folder, it contaions all script for the games
-      ├── Settings                  # In this folder, it contaions base settings from unity
-      ├── TextMeshPro               # In this folder, it contaions plugin for TextMeshPro
-      ├── Tumbal                    # In this folder, it contaions image for placeholder when development
-      ├── TutorialInfo              # In this folder, it contaions URP packages
+   ├── Assets                       # Project assets and resources
+      ├── Animations                # Animation clips and Animator Controllers
+      ├── Import                    # Imported packages and third-party assets
+      ├── Materials                 # Materials used by game objects
+      ├── Plugins                   # Third-party plugins and development tools
+      ├── Prefabs                   # Reusable game object prefabs
+      ├── Resources                 # Resources loaded at runtime
+      ├── Scenes                    # Game scenes that can be opened and played in Unity
+      ├── Scripts                   # Gameplay and system scripts
+      ├── Settings                  # Unity project settings and configurations
+      ├── TextMeshPro               # TextMeshPro assets and resources
+      ├── Tumbal                    # Temporary placeholder assets used during development
+      ├── TutorialInfo              # Unity-generated tutorial and URP resources
    ├── ...
       
 ```
