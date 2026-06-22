@@ -14,8 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heroSprite: {fileID: 21300000, guid: 46b883ffb9efba84f96e8444c39e46dc, type: 3}
   heroName: Bobby
-  health: 20
   maxHealth: 50
-  mana: 35
   maxMana: 100
-  heroPrefab: {fileID: 0}
+  heroPrefab: {fileID: 3471344701289315310, guid: d60d45d07458b064e91e9fe0620104fc, type: 3}
